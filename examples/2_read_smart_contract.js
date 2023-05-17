@@ -26,5 +26,6 @@ const main = async () => {
             console.log(`symbol: ${symbol} \n`);
                 console.log(`totalSupply: ${totalSupply} \n`);
                     console.log(`balancOf: ${balance} \n`);
+                        console.log(`balanceOf Formated: ${ethers.utils.formatEther(balance)} \n`);
 }
  main();
