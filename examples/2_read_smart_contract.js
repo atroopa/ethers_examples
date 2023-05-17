@@ -1,4 +1,3 @@
-console.clear();
 const { ethers } = require('ethers');
 
 const INFURA_ID  = 'f67125134e064cf094e2495c49323c68';
