@@ -15,16 +15,16 @@ const main = async () => {
 
     // show balance account1 befor transfer
     const senderBalanceBefor = await provider.getBalance(account1);
-    console.log(`\n Sender Balance Befor : ${senderBalanceBefor}`);
+    console.log(`\n Sender Balance Befor : ${ethers.utils.formatEther(senderBalanceBefor)} ETH`);
 
     // show balance account2 befor transfer
     const recieverBalanceBefor = await provider.getBalance(account2);
-    console.log(` reciever Balance Befor : ${recieverBalanceBefor} \n`);
+    console.log(` reciever Balance Befor : ${ethers.utils.formatEther(recieverBalanceBefor)} ETH \n`);
 
     // Send Ether
     const tx = await wallet.sendTransaction({
         to: account2,
-        value: ethers.utils.parseEther("0.028")
+        value: ethers.utils.parseEther("1")
     })
 
     // Fetch Transaction
@@ -33,11 +33,11 @@ const main = async () => {
 
     // show balance account1 befor transfer
     const senderBalanceAfter = await provider.getBalance(account1);
-    console.log(`\n Sender Balance After : ${senderBalanceAfter}`);
+    console.log(`\n Sender Balance After : ${ethers.utils.formatEther(senderBalanceAfter)} ETH`);
 
     // show balance account2 befor transfer
     const recieverBalanceAfter = await provider.getBalance(account2);
-    console.log(` reciever Balance After : ${recieverBalanceAfter} \n`);
+    console.log(` reciever Balance After : ${ethers.utils.formatEther(recieverBalanceAfter)} ETH\n`);
 }
 
 main()
