@@ -1,8 +1,8 @@
 const { ethers } = require('ethers');
 
-const INFURA_ID  = 'f67125134e064cf094e2495c49323c68';
-const provider   = new ethers.providers.JsonRpcProvider(`https://goerli.infura.io/v3/${INFURA_ID}`);
-const address    = '0x6B175474E89094C44Da98b954EedeAC495271d0F';
+//const INFURA_ID  = 'f67125134e064cf094e2495c49323c68';
+const provider   = new ethers.providers.JsonRpcProvider(`HTTP://127.0.0.1:7545`);
+const address    = '0x06012c8cf97bead5deae237070f9587f8e7a266d';
 
 const ERC20_ABI  = [
     "function name() view returns (string)",
@@ -18,7 +18,8 @@ const contract   = new ethers.Contract(address, ERC20_ABI, provider);
 
 const main = async () => {
 
-    const transferEvent = await contract.queryFilter("Transfer", 17285170 , 17285177);
+    const block = await provider.getBlockNumber();
+    const transferEvent = await contract.queryFilter("Transfer", block - 5 , block);
     console.log(transferEvent)
 
 };
