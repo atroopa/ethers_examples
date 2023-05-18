@@ -8,13 +8,18 @@ const ERC20_ABI  = [
     "function name() view returns (string)",
     "function symbol() view returns (string)",
     "function totalSupply() view returns (uint256)",
-    "function balanceOf(address) view returns (uint)"
-]
+    "function balanceOf(address) view returns (uint)",
+
+    "event Transfer(address indexed from, address indexed to, uint amount)"
+];
 
 
 const contract   = new ethers.Contract(address, ERC20_ABI, provider);
 
 const main = async () => {
+
+    const transferEvent = await contract.queryFilter("Transfer", 17285170 , 17285177);
+    console.log(transferEvent)
 
 };
 
